@@ -1,0 +1,1 @@
+E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.csprojResolveAssemblyReference.cache

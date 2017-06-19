@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Emgu.CV;
+using TrafficSignRecogniser;
 
 namespace TrafficSignRecognition
 {
@@ -20,7 +21,7 @@ namespace TrafficSignRecognition
       {
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-         Application.Run(new TrafficSignRecognitionForm());
+         Application.Run(new Nie());
       }
    }
 }
