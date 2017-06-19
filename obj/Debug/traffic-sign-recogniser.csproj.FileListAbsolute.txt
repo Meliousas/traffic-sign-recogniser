@@ -1,1 +1,9 @@
 E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.csprojResolveAssemblyReference.cache
+E:\emgucv-windesktop 3.2.0.2682\bin\stop-sign-model.png
+E:\emgucv-windesktop 3.2.0.2682\bin\stop-sign.jpg
+E:\emgucv-windesktop 3.2.0.2682\bin\traffic-sign-recogniser.exe
+E:\emgucv-windesktop 3.2.0.2682\bin\traffic-sign-recogniser.pdb
+E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\TrafficSignRecogniser.Nie.resources
+E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.csproj.GenerateResource.Cache
+E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.exe
+E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.pdb
