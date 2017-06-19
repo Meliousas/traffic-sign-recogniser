@@ -20,7 +20,7 @@ namespace TrafficSignRecogniser
     {
         List<Image<Bgr, byte>> model= new List<Image<Bgr, byte>>();
         Image<Bgr, byte> current;
-        private SURF detector = new SURF(300);
+        private KAZE detector = new KAZE();
 
 
         public Nie()
@@ -115,10 +115,10 @@ namespace TrafficSignRecogniser
             {
 
                 Image<Bgr, Byte> myImage = new Image<Bgr, byte>(openFile.FileName);
-                var tempImage = myImage.Resize(pictureBox1.Width, pictureBox1.Height, Emgu.CV.CvEnum.Inter.Linear);
+                var tempImage = myImage.Resize(pictureBox1.Width, pictureBox1.Height, Inter.Linear);
                 Image<Gray, Byte> hsvImage = tempImage.Convert<Gray, Byte>();
                 pictureBox1.Image = tempImage.ToBitmap();
-                current = tempImage;
+                current = myImage;
 
             }
         }
