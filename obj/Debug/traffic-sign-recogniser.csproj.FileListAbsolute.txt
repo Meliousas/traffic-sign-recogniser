@@ -8,3 +8,5 @@ E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug
 E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\traffic-sign-recogniser.pdb
 E:\emgucv-windesktop 3.2.0.2682\bin\model\stop-sign-model.png
 E:\emgucv-windesktop 3.2.0.2682\Emgu.CV.Example\TrafficSignRecognition\obj\Debug\TrafficSignRecogniser.Properties.Resources.resources
+E:\emgucv-windesktop 3.2.0.2682\bin\model\rightofway-sign-model.png
+E:\emgucv-windesktop 3.2.0.2682\bin\model\pedestrian-sign-model.png

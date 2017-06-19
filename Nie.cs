@@ -70,7 +70,7 @@ namespace TrafficSignRecogniser
         private void find(Mat modelImage, out VectorOfKeyPoint modelKeyPoints, VectorOfVectorOfDMatch matches, out Mat mask, out Mat homography) {
 
             int k = 2;
-            double uniquenessThreshold = 0.60;
+            double uniquenessThreshold = 0.75;
 
             homography = null;
 
@@ -88,7 +88,7 @@ namespace TrafficSignRecogniser
 
             matcher.Add(modelDescriptors);
 
-            matcher.KnnMatch(currentDescriptors, matches, k, null);
+           matcher.KnnMatch(currentDescriptors, matches, k, null);
             mask = new Mat(matches.Size, 1, DepthType.Cv8U, 1);
             mask.SetTo(new MCvScalar(255));
             Features2DToolbox.VoteForUniqueness(matches, uniquenessThreshold, mask);
