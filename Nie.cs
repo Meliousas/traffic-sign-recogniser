@@ -14,11 +14,25 @@ namespace TrafficSignRecogniser
     public partial class Nie : Form
     {
         List<Image<Bgr, byte>> model= new List<Image<Bgr, byte>>();
-
+        
 
         public Nie()
         {
             InitializeComponent();
+            foreach (string f in System.IO.Directory.GetFiles("model"))
+            {
+                try
+                {
+                    Image<Bgr, byte> img = new Image<Bgr,byte>(f);
+                    model.Add(img);
+                }
+                catch
+                {
+                    // Out of Memory Exceptions are thrown in Image.FromFile if you pass in a non-image file.
+                }
+            }
+            var item = model[model.Count - 1].Resize(pictureBox2.Width, pictureBox2.Height, Emgu.CV.CvEnum.Inter.Linear);
+            pictureBox2.Image = item.ToBitmap();
         }
 
    
@@ -34,7 +48,7 @@ namespace TrafficSignRecogniser
             {
 
                 Image<Bgr, Byte> myImage = new Image<Bgr, byte>(openFile.FileName);
-                var tempImage = myImage.Resize(480, 320, Emgu.CV.CvEnum.Inter.Linear);
+                var tempImage = myImage.Resize(pictureBox1.Width, pictureBox1.Height, Emgu.CV.CvEnum.Inter.Linear);
                 Image<Gray, Byte> hsvImage = tempImage.Convert<Gray, Byte>();
                 pictureBox1.Image = tempImage.ToBitmap();
 
@@ -47,6 +61,11 @@ namespace TrafficSignRecogniser
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
