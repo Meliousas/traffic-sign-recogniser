@@ -66,9 +66,11 @@ namespace TrafficSignRecogniser
                         var item = itemx.Resize(pictureBox2.Width, pictureBox2.Height, Inter.Linear);
                         pictureBox2.Image = item.ToBitmap();
 						
-							signnames = name.Where(kvp => kvp.Key == modelImage).Select(kvp => kvp.Value).FirstOrDefault() + " " + signnames;
-
+							signnames = name.Where(kvp => kvp.Key == modelImage).Select(kvp => kvp.Value).FirstOrDefault();
+						
 						Sign.Text = signnames;
+						draw(homography,modelImage);
+						
                     }
                 }
             }
@@ -76,10 +78,31 @@ namespace TrafficSignRecogniser
 			Time.Text = String.Format("{0} seconds", watch.Elapsed.TotalSeconds);
         }
 
-        private void find(Mat modelImage, out VectorOfKeyPoint modelKeyPoints, VectorOfVectorOfDMatch matches, out Mat mask, out Mat homography) {
+
+		private void draw(Mat homography, Mat modelImage)
+		{
+			PointF[] pts = new PointF[]
+					{
+						new PointF(rect.Left, rect.Bottom),
+						new PointF(rect.Right, rect.Bottom),
+						new PointF(rect.Right, rect.Top),
+						new PointF(rect.Left, rect.Top)
+					};
+			pts = CvInvoke.PerspectiveTransform(pts, homography);
+
+			Rectangle circle = PointCollection.BoundingRectangle(pts);
+
+			current.Draw(circle,new Bgr(Color.Red),1);
+			
+			var tempImage = current.Resize(pictureBox1.Width, pictureBox1.Height, Inter.Linear);
+			pictureBox1.Image = tempImage.ToBitmap();
+		}
+
+
+			private void find(Mat modelImage, out VectorOfKeyPoint modelKeyPoints, VectorOfVectorOfDMatch matches, out Mat mask, out Mat homography) {
 
             int k = 2;
-            double uniquenessThreshold = 0.75;
+            double uniquenessThreshold = 0.70;
 
             homography = null;
 
@@ -108,7 +131,9 @@ namespace TrafficSignRecogniser
                 nonZeroCount = Features2DToolbox.VoteForSizeAndOrientation(modelKeyPoints, currentKeyPoints, matches, mask, 1.5, 20);
                 if (nonZeroCount >= 4)
                     homography = Features2DToolbox.GetHomographyMatrixFromMatchedFeatures(modelKeyPoints, currentKeyPoints, matches, mask, 2);
-            }
+				
+
+			}
 
         }
    
