@@ -89,13 +89,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="beer.ico" />
-    <Content Include="model\rightofway-sign-model.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="model\stop-sign-model.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="model\pedestrian-sign-model.png">
+    <Content Include="model\zakaz-ruchu-rowerow-model.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="model\zakaz-skretu-lewo-model.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="model\zakaz-zawracania-model.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="stop-sign.jpg">

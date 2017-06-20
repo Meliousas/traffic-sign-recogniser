@@ -69,7 +69,7 @@ namespace TrafficSignRecogniser
 							signnames = name.Where(kvp => kvp.Key == modelImage).Select(kvp => kvp.Value).FirstOrDefault();
 						
 						Sign.Text = signnames;
-						draw(homography,modelImage);
+
 						
                     }
                 }
@@ -79,23 +79,11 @@ namespace TrafficSignRecogniser
         }
 
 
-		private void draw(Mat homography, Mat modelImage)
+		private void draw()
 		{
-			PointF[] pts = new PointF[]
-					{
-						new PointF(rect.Left, rect.Bottom),
-						new PointF(rect.Right, rect.Bottom),
-						new PointF(rect.Right, rect.Top),
-						new PointF(rect.Left, rect.Top)
-					};
-			pts = CvInvoke.PerspectiveTransform(pts, homography);
 
-			Rectangle circle = PointCollection.BoundingRectangle(pts);
 
-			current.Draw(circle,new Bgr(Color.Red),1);
-			
-			var tempImage = current.Resize(pictureBox1.Width, pictureBox1.Height, Inter.Linear);
-			pictureBox1.Image = tempImage.ToBitmap();
+
 		}
 
 
