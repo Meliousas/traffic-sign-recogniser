@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace TrafficSignRecogniser
         List<Image<Bgr, byte>> model= new List<Image<Bgr, byte>>();
         Image<Bgr, byte> current;
         private KAZE detector = new KAZE();
-
+		Dictionary<Mat,String> name = new Dictionary<Mat, String>();
 
         public Nie()
         {
@@ -32,7 +33,7 @@ namespace TrafficSignRecogniser
                 {
                     Image<Bgr, byte> img = new Image<Bgr,byte>(f);
                     model.Add(img);
-
+					name.Add(img.Mat, f);
                 }
                 catch
                 {
@@ -45,6 +46,8 @@ namespace TrafficSignRecogniser
         }
 
         private void recognise() {
+			Stopwatch watch = Stopwatch.StartNew();
+			String signnames = "";
             foreach (var image in model)
             {
                 using (Mat modelImage = image.Mat)
@@ -62,9 +65,15 @@ namespace TrafficSignRecogniser
                         //display found sign in another pictureBox
                         var item = itemx.Resize(pictureBox2.Width, pictureBox2.Height, Inter.Linear);
                         pictureBox2.Image = item.ToBitmap();
+						
+							signnames = name.Where(kvp => kvp.Key == modelImage).Select(kvp => kvp.Value).FirstOrDefault() + " " + signnames;
+
+						Sign.Text = signnames;
                     }
                 }
             }
+			watch.Stop();
+			Time.Text = String.Format("{0} seconds", watch.Elapsed.TotalSeconds);
         }
 
         private void find(Mat modelImage, out VectorOfKeyPoint modelKeyPoints, VectorOfVectorOfDMatch matches, out Mat mask, out Mat homography) {
